@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Update Status
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-bottom:20px;">
+    Update Equipment Status
+</h1>
+
+<div style="background:white; padding:20px; border-radius:10px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.2); width:60%; margin:auto;">
+
+    <p><strong>Equipment ID:</strong> {{ equipment.equipment_id }}</p>
+    <p><strong>Equipment Name:</strong> {{ equipment.equipment_name }}</p>
+    <p><strong>Current Status:</strong> {{ equipment.status }}</p>
+
+    <hr><br>
+
+    <form method="POST">
+
+        <label><strong>Select New Status:</strong></label>
+        <br><br>
+
+        <select name="status" required
+                style="width:100%; padding:10px; border-radius:5px;">
+            <option value="Active">Active</option>
+            <option value="Under Maintenance">Under Maintenance</option>
+            <option value="Decommissioned">Decommissioned</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit"
+                style="padding:10px 20px; background:#007bff;
+                       color:white; border:none; border-radius:5px;">
+            Update Status
+        </button>
+
+    </form>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+    <a href="/equipment/{{ equipment.equipment_id }}">
+        <button style="padding:10px 20px;">
+            Back to Details
+        </button>
+    </a>
+</div>
+
+{% endblock %}

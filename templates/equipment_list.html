@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+Equipment List
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-bottom:20px;">
+    Equipment List
+</h1>
+
+<div style="text-align:right; margin-bottom:15px;">
+    <a href="/add-equipment">
+        <button style="padding:10px 20px;">
+            Add Equipment
+        </button>
+    </a>
+</div>
+
+<table border="1" cellpadding="10" cellspacing="0"
+       style="width:100%; background:white;">
+
+    <tr>
+        <th>ID</th>
+        <th>Equipment Name</th>
+        <th>Serial Number</th>
+        <th>Department</th>
+        <th>Purchase Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for equipment in equipments %}
+    <tr>
+        <td>{{ equipment.equipment_id }}</td>
+        <td>{{ equipment.equipment_name }}</td>
+        <td>{{ equipment.serial_number }}</td>
+        <td>{{ equipment.department }}</td>
+        <td>{{ equipment.purchase_date }}</td>
+        <td>{{ equipment.status }}</td>
+        <td>
+            <a href="/equipment/{{ equipment.equipment_id }}">
+                View Details
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% if not equipments %}
+<p style="text-align:center; margin-top:20px;">
+    No equipment records found.
+</p>
+{% endif %}
+
+{% endblock %}

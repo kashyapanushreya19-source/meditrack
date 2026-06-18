@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} - MediTrack</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <nav style="
+        background:#007bff;
+        padding:15px;
+        text-align:center;
+    ">
+        <a href="/" style="color:white; margin:15px; text-decoration:none;">
+            Dashboard
+        </a>
+
+        <a href="/equipment"
+           style="color:white; margin:15px; text-decoration:none;">
+            Equipment
+        </a>
+
+        <a href="/add-equipment"
+           style="color:white; margin:15px; text-decoration:none;">
+            Add Equipment
+        </a>
+    </nav>
+
+    <div style="padding:20px;">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

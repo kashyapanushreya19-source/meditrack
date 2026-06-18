@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-bottom:30px;">
+    MediTrack Dashboard
+</h1>
+
+<div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+
+    <div style="background:white; padding:20px; width:220px; text-align:center;
+                border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+        <h3>Total Equipment</h3>
+        <h2>{{ total_equipment }}</h2>
+    </div>
+
+    <div style="background:white; padding:20px; width:220px; text-align:center;
+                border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+        <h3>Active</h3>
+        <h2>{{ active_count }}</h2>
+    </div>
+
+    <div style="background:white; padding:20px; width:220px; text-align:center;
+                border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+        <h3>Under Maintenance</h3>
+        <h2>{{ maintenance_count }}</h2>
+    </div>
+
+    <div style="background:white; padding:20px; width:220px; text-align:center;
+                border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+        <h3>Decommissioned</h3>
+        <h2>{{ decommissioned_count }}</h2>
+    </div>
+
+</div>
+
+<br><br>
+
+<h2>Overdue Maintenance Equipment</h2>
+
+<table border="1" cellpadding="10" cellspacing="0"
+       style="width:100%; background:white;">
+
+    <tr>
+        <th>Equipment Name</th>
+        <th>Department</th>
+        <th>Next Due Date</th>
+    </tr>
+
+    {% for item in overdue_items %}
+    <tr>
+        <td>{{ item.equipment_name }}</td>
+        <td>{{ item.department }}</td>
+        <td>{{ item.next_due_date }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+
+<div style="text-align:center;">
+    <a href="/add-equipment">
+        <button style="padding:10px 20px;">Add Equipment</button>
+    </a>
+
+    <a href="/equipment">
+        <button style="padding:10px 20px;">View Equipment</button>
+    </a>
+</div>
+
+{% endblock %}

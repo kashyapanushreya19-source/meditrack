@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Maintenance Log - MediTrack</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:60%;
+            margin:40px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align:center;
+            color:#333;
+        }
+
+        label{
+            display:block;
+            margin-top:15px;
+            font-weight:bold;
+        }
+
+        input, textarea{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        textarea{
+            resize:vertical;
+            min-height:80px;
+        }
+
+        button{
+            width:100%;
+            margin-top:20px;
+            padding:12px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+
+        .back-btn{
+            display:block;
+            text-align:center;
+            margin-top:15px;
+            text-decoration:none;
+            color:#007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add Maintenance Log</h2>
+
+    <form method="POST">
+
+        <label>Maintenance Date</label>
+        <input type="date" name="maintenance_date" required>
+
+        <label>Technician Name</label>
+        <input type="text" name="technician_name" required>
+
+        <label>Issue Reported</label>
+        <textarea name="issue_reported" required></textarea>
+
+        <label>Resolution Notes</label>
+        <textarea name="resolution_notes" required></textarea>
+
+        <label>Next Due Date</label>
+        <input type="date" name="next_due_date" required>
+
+        <button type="submit">Add Maintenance Record</button>
+
+    </form>
+
+    <a href="/" class="back-btn">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

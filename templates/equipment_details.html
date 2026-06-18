@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+Equipment Details
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center; margin-bottom:20px;">
+    Equipment Details
+</h1>
+
+<div style="background:white; padding:20px; border-radius:10px;
+            box-shadow:0 2px 5px rgba(0,0,0,0.2);">
+
+    <p><strong>Equipment ID:</strong> {{ equipment.equipment_id }}</p>
+    <p><strong>Equipment Name:</strong> {{ equipment.equipment_name }}</p>
+    <p><strong>Serial Number:</strong> {{ equipment.serial_number }}</p>
+    <p><strong>Department:</strong> {{ equipment.department }}</p>
+    <p><strong>Purchase Date:</strong> {{ equipment.purchase_date }}</p>
+    <p><strong>Status:</strong> {{ equipment.status }}</p>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+    <a href="/add-maintenance/{{ equipment.equipment_id }}">
+        <button style="padding:10px 20px;">
+            Add Maintenance Log
+        </button>
+    </a>
+
+    <a href="/update-status/{{ equipment.equipment_id }}">
+        <button style="padding:10px 20px;">
+            Update Status
+        </button>
+    </a>
+</div>
+
+<br><br>
+
+<h2>Maintenance History</h2>
+
+<table border="1" cellpadding="10" cellspacing="0"
+       style="width:100%; background:white;">
+
+    <tr>
+        <th>Maintenance Date</th>
+        <th>Technician</th>
+        <th>Issue Reported</th>
+        <th>Resolution Notes</th>
+        <th>Next Due Date</th>
+    </tr>
+
+    {% for log in maintenance_logs %}
+    <tr>
+        <td>{{ log.maintenance_date }}</td>
+        <td>{{ log.technician_name }}</td>
+        <td>{{ log.issue_reported }}</td>
+        <td>{{ log.resolution_notes }}</td>
+        <td>{{ log.next_due_date }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+<br>
+
+<a href="/equipment">
+    <button style="padding:10px 20px;">
+        Back to Equipment List
+    </button>
+</a>
+
+{% endblock %}
